@@ -35,7 +35,6 @@ def text_from_html(text):
 def process_items(data, file):
     for key, item in enumerate(data['items']):
         if 'title' in item['content'] and 'text' in item['content']:
-            # print('found item')
             title = item['content']['title']
             text = item['content']['text']
             created_ts = format_string_date(item['created_at'])
@@ -61,7 +60,7 @@ if __name__ == "__main__":
         source = argv[1]
         data = json.load(open(source))
         target_file = process_items(data, file)
-        with open("notes_2.enex", "w") as text_file:
+        with open("notes.enex", "w") as text_file:
             text_file.write(target_file)
     else:
         print('You must call this script with a fully qualified and valid file as its only argument')
